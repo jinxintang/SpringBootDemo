@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-     active: dev,test,type
+     active: dev,test,type,complex-type
 home:
   province: 浙江省
   city: 温岭松门

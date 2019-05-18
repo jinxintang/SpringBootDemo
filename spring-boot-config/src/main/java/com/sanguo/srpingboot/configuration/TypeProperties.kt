@@ -12,4 +12,5 @@ class TypeProperties{
     var wareHouseIds:List<String>? = null
     var zoneInfo:Map<String, Zone>? = null
     var robotInfo:List<Robot>? = null
+    var flows:Map<String,List<String>>? = null
 }

@@ -1,19 +1,33 @@
 package com.sanguo.test.springboot
 
 import com.sanguo.srpingboot.Application
+import com.sanguo.srpingboot.configuration.TypeConfigJava
+import com.sanguo.srpingboot.configuration.TypeKotlinComplex
 import com.sanguo.srpingboot.configuration.TypeProperties
+import com.sanguo.srpingboot.entity.Robot
+import com.sanguo.srpingboot.entity.Zone
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = [Application::class])
-class TestTypeConfig {
+class TestKotlinConfig {
     @Autowired
     lateinit var typeConfig: TypeProperties
+
+    @Autowired
+    lateinit var typeConfigJava: TypeConfigJava
+
+    @Autowired
+    internal var typeKotlinComplex: TypeKotlinComplex? = null
+
+    @Test
+    fun testComplex(){
+        System.out.println(typeKotlinComplex)
+    }
 
     @Test
     fun testString() {
@@ -27,7 +41,6 @@ class TestTypeConfig {
         }
     }
 
-
     @Test
     fun testMap() {
         typeConfig.zoneInfo!!.values.forEach {
@@ -35,12 +48,18 @@ class TestTypeConfig {
         }
     }
 
-
-
     @Test
     fun testListRobot() {
         typeConfig.robotInfo!!.forEach{
             System.out.println("-------" +it.zoneId)
         }
     }
+
+    @Test
+    fun testFlows(){
+        typeConfig.flows!!.forEach {
+            System.out.println(it.key + it.value.size)
+        }
+    }
+
 }
