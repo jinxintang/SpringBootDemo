@@ -3,10 +3,12 @@ server:
 
 spring:
   profiles:
-     active: dev,test,type,complex-type
+    active: complex-type
+  #active: dev,test,type,complex-type
 home:
   province: 浙江省
   city: 温岭松门
   desc: 我家住在${home.province}的${home.city}
   age: ${random.int[1,200]}
+  sex: false
 

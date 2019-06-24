@@ -11,4 +11,5 @@ class TypeKotlinComplex {
     var flows:HashMap<String,List<String>>? = null
     var wares:List<String>? = null
     var nodes:HashMap<String,List<Robot>>? = null
+    var sex:Boolean = false
 }

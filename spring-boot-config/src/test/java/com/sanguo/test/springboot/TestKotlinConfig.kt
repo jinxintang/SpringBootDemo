@@ -26,7 +26,7 @@ class TestKotlinConfig {
 
     @Test
     fun testComplex(){
-        System.out.println(typeKotlinComplex)
+        System.out.println("------" + typeKotlinComplex!!.sex)
     }
 
     @Test

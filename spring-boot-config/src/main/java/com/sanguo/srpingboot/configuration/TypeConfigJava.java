@@ -14,7 +14,6 @@ public class TypeConfigJava {
     private HashMap<String, ArrayList<String>> flows;
     private ArrayList<Object> wares;
     private HashMap<String, ArrayList<Robot>> nodes;
-
     public HashMap<String, ArrayList<Robot>> getNodes() {
         return nodes;
     }

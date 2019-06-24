@@ -1,4 +1,5 @@
 megvii:
+  sex: true
   #单个属性
   serverHost: 39.106.227.136
 
@@ -24,6 +25,7 @@ megvii:
     - {frameId: 3,zoneId: 2,face: 1}
 
   person:
+    sex: false
     flows:
       a:
         - naafsd

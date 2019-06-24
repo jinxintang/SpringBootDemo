@@ -1,11 +1,13 @@
 坑：
-    1.使用Kotlin进行配置List和Map时，一定不要使用lateinit！！！
+    1.使用Kotlin进行配置List和HashMap时，一定不要使用lateinit！！！
+
     2.空格决定层级,robot只能在第二层级：
     megvii:
        robot:
         如果@ConfigurationProperties(prefix = "megvii.person"),person有值
         如果@ConfigurationProperties(prefix = "person"),Person为空，这样用必须在配置文件中把person顶格写
 
+    3.注入的class类中一定要用HashMap,不能使用Map，否则会报空指针
 
 注：
 1.application.properties 配置中文值的时候，读取出来的属性值会出现乱码问题。但是 application.yml 不会出现乱码问题。原因是，Spring Boot 是以 iso-8859 的编码方式读取 application.properties 配置文件。

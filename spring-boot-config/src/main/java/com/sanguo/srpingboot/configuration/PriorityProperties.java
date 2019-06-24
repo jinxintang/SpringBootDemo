@@ -12,7 +12,6 @@ public class PriorityProperties {
     private String city;
     private String desc;
     private Integer age;
-
     public Integer getAge() {
         return age;
     }
