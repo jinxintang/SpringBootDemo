@@ -1,6 +1,7 @@
 package com.sanguo.test
 
 import com.sanguo.mybatis.baomidou.Application
+import com.sanguo.mybatis.baomidou.mapper.FlowTaskMapper
 import com.sanguo.mybatis.baomidou.service.IFlowTaskJobService
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,8 +17,16 @@ class DbTest{
     @Autowired
     lateinit var flowTaskJobService: IFlowTaskJobService
 
+    @Autowired
+    lateinit var flowTaskMap: FlowTaskMapper
+
     @Test
     fun testFlowTaskJob(){
         System.out.println("-----beer-----"+flowTaskJobService.getById(6)?.errorMsg)
+    }
+
+    @Test
+    fun testFlowTask(){
+        System.out.println("-----beer2-----"+flowTaskMap.getByStatusLength(300).get(0).agvId)
     }
 }

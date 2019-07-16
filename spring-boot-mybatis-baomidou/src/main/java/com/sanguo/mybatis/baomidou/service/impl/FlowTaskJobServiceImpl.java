@@ -1,13 +1,18 @@
 package com.sanguo.mybatis.baomidou.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sanguo.mybatis.baomidou.domain.FlowAgv;
 import com.sanguo.mybatis.baomidou.domain.FlowTaskJob;
+import com.sanguo.mybatis.baomidou.enums.FlowAgvStatusEnum;
 import com.sanguo.mybatis.baomidou.enums.FlowTaskJobStatusEnum;
 import com.sanguo.mybatis.baomidou.mapper.FlowTaskJobMapper;
 import com.sanguo.mybatis.baomidou.service.IFlowTaskJobService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -38,7 +43,11 @@ public class FlowTaskJobServiceImpl extends ServiceImpl<FlowTaskJobMapper, FlowT
         update(updateWrapper);
     }
 
+
     @Override
-    public void findById(String id) {
+    public List<FlowTaskJob> findByToZoneCode(String toZoneCode) {
+        return list(new LambdaQueryWrapper<FlowTaskJob>()
+                .eq(FlowTaskJob::getStatus, FlowAgvStatusEnum.FREE.code)
+                .eq(FlowTaskJob::getToZoneCode,toZoneCode));
     }
 }

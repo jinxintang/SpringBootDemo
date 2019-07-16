@@ -3,6 +3,10 @@ package com.sanguo.mybatis.baomidou.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sanguo.mybatis.baomidou.domain.FlowTaskJob;
+import com.sanguo.mybatis.baomidou.mapper.FlowTaskJobMapper;
+
+import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * <p>
@@ -28,6 +32,6 @@ public interface IFlowTaskJobService extends IService<FlowTaskJob> {
      */
     void failJob(String jobId, String errorMsg);
 
-    void findById(String id);
+    public List<FlowTaskJob> findByToZoneCode(String id);
 }
 
