@@ -32,6 +32,6 @@ public interface IFlowTaskJobService extends IService<FlowTaskJob> {
      */
     void failJob(String jobId, String errorMsg);
 
-    public List<FlowTaskJob> findByToZoneCode(String id);
+    List<FlowTaskJob> findByToZoneCode(String id);
 }
 

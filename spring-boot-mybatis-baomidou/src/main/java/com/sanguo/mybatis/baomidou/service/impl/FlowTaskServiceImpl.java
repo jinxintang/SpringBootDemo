@@ -4,12 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sanguo.mybatis.baomidou.domain.FlowAgv;
 import com.sanguo.mybatis.baomidou.domain.FlowTask;
-import com.sanguo.mybatis.baomidou.enums.FlowAgvStatusEnum;
 import com.sanguo.mybatis.baomidou.enums.FlowTaskStatusEnum;
 import com.sanguo.mybatis.baomidou.mapper.FlowTaskMapper;
 import com.sanguo.mybatis.baomidou.service.IFlowTaskService;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,8 @@ import java.util.List;
  */
 @Service
 public class FlowTaskServiceImpl extends ServiceImpl<FlowTaskMapper, FlowTask> implements IFlowTaskService {
+    @Autowired
+    private FlowTaskMapper flowTaskMapper;
 
     @Override
     public void doneTask(Long flowTaskId) {
@@ -43,8 +46,7 @@ public class FlowTaskServiceImpl extends ServiceImpl<FlowTaskMapper, FlowTask> i
 
     @Override
     public List<FlowTask> findByStatusLength(int length) {
-        return list(new LambdaQueryWrapper<FlowTask>()
-                .ne(FlowTask::getStatus, FlowTaskStatusEnum.DONE));
+        return flowTaskMapper.getByStatusLength(length);
     }
 
 }
